@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currying</title>
+</head>
+<body>
+    <script>
+        function a(x){
+            return function(y){
+                return function(z){
+                    return x+y+z;
+                }
+            }
+        }
+
+        let res = a(2);
+        let res1 = res(2);
+        let res2 = res1(2);
+        document.write('without currying : ',res2)
+        document.write('<br>')
+        document.write('with currying : ',a(2)(2)(2))
+        document.write('<br>')
+
+        function b(x){
+            return function(y){
+                if(y) return b(x+y)
+                return x
+            }
+        }
+
+        document.write('infinite currying : ',b(2)(2)(2)())
+    </script>
+</body>
+</html>
